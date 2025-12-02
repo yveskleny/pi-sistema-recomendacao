@@ -1,4 +1,1 @@
-.venv
-.vscode
-__pycache__/
-dados/TMDB_all_movies.csv
+.venv/

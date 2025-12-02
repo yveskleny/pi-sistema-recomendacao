@@ -1,6 +1,6 @@
-from load_movies import load_movies
-from genre_vectorizer import vectorize_genres
-from similarity import compute_similarity
+from src.scripts.load_movies import load_movies
+from src.scripts.genre_vectorizer import vectorize_genres
+from src.scripts.similarity import compute_similarity
 
 import numpy as np
 

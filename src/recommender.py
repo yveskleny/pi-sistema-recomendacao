@@ -1,6 +1,6 @@
-from src.scripts.load_movies import load_movies
-from src.scripts.genre_vectorizer import vectorize_genres
-from src.scripts.similarity import compute_similarity
+from load_movies import load_movies
+from genre_vectorizer import vectorize_genres
+from similarity import compute_similarity
 
 import numpy as np
 
@@ -28,6 +28,19 @@ def recommend_by_index(movie_index, matrix_sim, movies, n=10):
     return movies.iloc[indices_ordenados]["title"]
 
 
-id_filme = 0  # Toy Story é geralmente o primeiro filme no ML-small
-recs = recommend_by_index(id_filme, similarity_matrix, movies, n=20)
-print(recs)
+def recommend_by_title(movie_title, matrix_sim, movies, n=10):
+    """
+    Retorna os n filmes mais similares dado um título.
+    """
+
+    movie_index = movies[movies["title"] == movie_title].index[0]
+    return recommend_by_index(movie_index, matrix_sim, movies, n)
+
+    # Exemplo de uso:
+
+
+titulo_exemplo = "Terminator 3: Rise of the Machines (2003)"
+recomendados = recommend_by_title(titulo_exemplo, similarity_matrix, movies, n=20)
+print(f"Filmes recomendados para '{titulo_exemplo}':")
+for filme in recomendados:
+    print(f"- {filme}")
